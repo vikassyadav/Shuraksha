@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/feat1"
+        android:title="Call log"
+        android:icon="@drawable/call_log"/>
+    <!--        app:showAsAction="ifRoom"/>-->
+    <item
+        android:id="@+id/feat2"
+        android:title="Screen time"
+        android:icon="@drawable/screen_time"/>
+    <item
+        android:id="@+id/feat3"
+        android:title="Geo Location"
+        android:icon="@drawable/geo_locatioin"/>
+    <item
+        android:id="@+id/feat4"
+        android:title="GeoFencing"
+        android:icon="@drawable/feature_1"/>
+    <item
+        android:id="@+id/feat5"
+        android:title="BlackList app "
+        android:icon="@drawable/feature_1"/>
+    <item
+        android:id="@+id/feat6"
+        android:title="BlackList websites"
+        android:icon="@drawable/feature_1"/>
+
+
+
+</menu>

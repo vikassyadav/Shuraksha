@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Shuraksha</string>
+    <string name="suraksha">Suraksha</string>
+    <string name="quoteOfOurAPP">Monitor your Child\'s Activity</string>
+    <string name="OpenDrawer">Open Navigation</string>
+    <string name="CloseDrawer">Closen Navigation</string>
+    <string name="default_web_client_id">275664723435-ibbkasuke2t8nfobsog6b4g8aafse1a3.apps.googleusercontent.com</string>
+</resources>
