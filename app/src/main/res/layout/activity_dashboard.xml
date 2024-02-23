@@ -52,7 +52,10 @@ tools:context=".dashboard">
     android:layout_marginBottom="15dp"
     android:elevation="20dp"
     app:cardCornerRadius="20dp">
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/dashboard"/>
     <!--                add pie chart -->
 
 
@@ -68,18 +71,69 @@ tools:context=".dashboard">
     app:cardCornerRadius="25dp">
 
     <!--live location on map-->
-
-    <fragment
-        android:id="@+id/mapFragment"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <FrameLayout
+        android:id="@+id/mapContainer"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stats"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <fragment
+            android:id="@+id/mapFragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </FrameLayout>
+
 
 </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_controlCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginEnd="113dp"
+        android:layout_marginBottom="62dp"
+        android:background="@drawable/round_corner"
+        android:fontFamily="@font/lato_bold"
+        android:gravity="center"
+        android:text="Go to Control Center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_addChild"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginEnd="40dp"
+       android:layout_marginTop="625dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/add_child"
+        android:backgroundTint="#D68E58"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_addChild"
+        android:layout_marginStart="310dp"
+        android:text="Add child"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
 
 </RelativeLayout>
 

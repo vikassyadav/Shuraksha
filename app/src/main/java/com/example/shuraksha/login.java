@@ -28,9 +28,7 @@ public class login extends AppCompatActivity {
     private ActivityLoginBinding binding;
     GoogleSignInClient signInClient;
     GoogleSignInOptions signInOptions;
-GoogleSignInOptions gso;
-    GoogleSignInClient gsc;
-    FirebaseAuth auth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +55,7 @@ GoogleSignInOptions gso;
                             @Override
                             public void onComplete(@NonNull Task task) {
                                 if (task.isSuccessful()) {
-                                    Intent intent = new Intent(login.this, MainActivity.class);
+                                    Intent intent = new Intent(login.this, ParentChildOpt.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
@@ -86,18 +84,18 @@ GoogleSignInOptions gso;
 
     }
 
-//    @Override
-//    protected void onStart () {
-//        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-//        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-//        if (currentUser != null) {
-//            //showhomescreen
-//            startActivity(new Intent( this , MainActivity.class));
-//            finish();
-//        }
-//        super.onStart();
-//
-//    }
+    @Override
+    protected void onStart () {
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        if (currentUser != null) {
+            //showhomescreen
+            startActivity(new Intent( this , ParentChildOpt.class));
+            finish();
+        }
+        super.onStart();
+
+    }
 
 
     void signIn(){
@@ -120,7 +118,7 @@ GoogleSignInOptions gso;
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(login.this, "Login Sucessfully!!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext() , MainActivity.class));
+                            startActivity(new Intent(getApplicationContext() , ParentChildOpt.class));  //parnt child opt aayega
                             finish();
                         } else {
                             Toast.makeText(login.this, "Login Failed", Toast.LENGTH_SHORT).show();

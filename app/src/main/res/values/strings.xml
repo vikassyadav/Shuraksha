@@ -5,4 +5,5 @@
     <string name="OpenDrawer">Open Navigation</string>
     <string name="CloseDrawer">Closen Navigation</string>
     <string name="default_web_client_id">275664723435-ibbkasuke2t8nfobsog6b4g8aafse1a3.apps.googleusercontent.com</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

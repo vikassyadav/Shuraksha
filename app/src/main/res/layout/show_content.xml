@@ -7,7 +7,7 @@
     android:background="#F3EEC1">
 
 
-<!--fragemenrt are going to tke place here-->
+<!--fragment are going to tke place here-->
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
@@ -46,6 +46,7 @@
             android:layout_below="@+id/bgView">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/live_location"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -79,6 +80,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/geo_fenceing"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -113,6 +115,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/screentime"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -146,6 +149,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/callLog"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -180,6 +184,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/dashboard"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -199,12 +204,12 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/feature_1" />
+                        android:src="@drawable/dashboard" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Live Location"
+                        android:text="DashBoard"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />

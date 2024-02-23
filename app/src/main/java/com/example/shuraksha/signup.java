@@ -26,6 +26,7 @@ public class signup extends AppCompatActivity {
             String confirmPass = binding.etConPass.getText().toString();
 
             if (!email.isEmpty() && !pass.isEmpty() && !confirmPass.isEmpty()) {
+//                if (pass.length() >= 6) {
                 if (pass.equals(confirmPass)) {
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(signup.this, task -> {
                         if (task.isSuccessful()) {
