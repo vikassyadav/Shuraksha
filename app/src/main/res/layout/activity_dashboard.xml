@@ -102,7 +102,6 @@ tools:context=".dashboard">
         android:layout_below="@+id/mapCard"
         android:layout_marginStart="@dimen/_100sdp"
         android:layout_marginTop="12dp"
-
         android:layout_marginBottom="@dimen/_62sdp"
         android:background="@drawable/round_corner"
         android:fontFamily="@font/lato_bold"
