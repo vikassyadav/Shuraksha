@@ -12,12 +12,12 @@ tools:context=".dashboard">
 <androidx.cardview.widget.CardView
     android:id="@+id/battery"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginRight="25dp"
-    android:layout_marginLeft="25dp"
-    android:elevation="20dp"
-    app:cardCornerRadius="20dp">
+    android:layout_height="@dimen/_40sdp"
+    android:layout_marginTop="@dimen/_8sdp"
+    android:layout_marginRight="@dimen/_15sdp"
+    android:layout_marginLeft="@dimen/_15sdp"
+    android:elevation="@dimen/_10sdp"
+    app:cardCornerRadius="@dimen/_20sdp">
 
     <!--                essential notification -->
 
@@ -30,9 +30,9 @@ tools:context=".dashboard">
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Child Name"
-            android:textSize="18sp"
+            android:textSize="@dimen/_12ssp"
             android:textStyle="bold"
-            android:layout_margin="8dp"
+            android:layout_marginLeft="@dimen/_10sdp"
             android:gravity="center"
             />
 
@@ -44,14 +44,13 @@ tools:context=".dashboard">
 <androidx.cardview.widget.CardView
     android:id="@+id/stats"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="@dimen/_180sdp"
     android:layout_below="@id/battery"
-    android:layout_marginStart="15dp"
-    android:layout_marginTop="43dp"
-    android:layout_marginEnd="15dp"
-    android:layout_marginBottom="15dp"
-    android:elevation="20dp"
-    app:cardCornerRadius="20dp">
+    android:layout_marginStart="@dimen/_15sdp"
+    android:layout_marginTop="@dimen/_20sdp"
+    android:layout_marginEnd="@dimen/_15sdp"
+    android:elevation="@dimen/_10sdp"
+    app:cardCornerRadius="@dimen/_20sdp">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -63,18 +62,20 @@ tools:context=".dashboard">
 
 
 <androidx.cardview.widget.CardView
+    android:id="@+id/mapCard"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="25dp"
-    android:layout_marginRight="25dp"
-    android:layout_marginTop="400dp"
-    app:cardCornerRadius="25dp">
+    android:layout_height="@dimen/_180sdp"
+    android:layout_below="@+id/stats"
+    android:layout_marginLeft="@dimen/_15sdp"
+    android:layout_marginRight="@dimen/_15sdp"
+    android:layout_marginTop="@dimen/_20sdp"
+    app:cardCornerRadius="@dimen/_20sdp">
 
     <!--live location on map-->
     <FrameLayout
         android:id="@+id/mapContainer"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="match_parent"
         app:layout_constraintTop_toBottomOf="@+id/stats"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,29 +98,28 @@ tools:context=".dashboard">
     <TextView
         android:id="@+id/tv_controlCenter"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="110dp"
-        android:layout_marginEnd="113dp"
-        android:layout_marginBottom="62dp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_below="@+id/mapCard"
+        android:layout_marginStart="@dimen/_100sdp"
+        android:layout_marginTop="12dp"
+
+        android:layout_marginBottom="@dimen/_62sdp"
         android:background="@drawable/round_corner"
         android:fontFamily="@font/lato_bold"
         android:gravity="center"
         android:text="Go to Control Center"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="@dimen/_12ssp"
         android:textStyle="bold" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_addChild"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginEnd="40dp"
-       android:layout_marginTop="625dp"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_25sdp"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:src="@drawable/add_child"
         android:backgroundTint="#D68E58"
         />
@@ -128,9 +128,9 @@ tools:context=".dashboard">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_addChild"
-        android:layout_marginStart="310dp"
+        android:layout_marginStart="@dimen/_310sdp"
         android:text="Add child"
-        android:textSize="18sp"
+        android:textSize="@dimen/_1ssp"
         android:textColor="@color/black"
         android:textStyle="bold" />
 

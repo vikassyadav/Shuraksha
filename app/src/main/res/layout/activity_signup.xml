@@ -15,7 +15,7 @@
         android:fontFamily="@font/nexa_heavy"
         android:text="@string/suraksha"
         android:textColor="#FF53E88B"
-        android:textSize="48sp"
+        android:textSize="@dimen/_38ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato_regular"
         android:text="@string/quoteOfOurAPP"
-        android:textSize="16sp"
+        android:textSize="@dimen/_12ssp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/textView6"
         app:layout_constraintHorizontal_bias="0.495"
@@ -41,16 +41,16 @@
         android:fontFamily="@font/nexa_heavy"
         android:text="Register Yourself"
         android:textColor="#FF53E88B"
-        android:textSize="24sp"
+        android:textSize="@dimen/_18ssp"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
         android:id="@+id/etSEmail"
-        android:layout_width="325dp"
+        android:layout_width="@dimen/_245sdp"
         android:layout_height="57dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/_18sdp"
         android:background="@drawable/edittextshape"
         android:drawableLeft="@drawable/mail"
         android:drawablePadding="10dp"
@@ -68,9 +68,9 @@
 
     <EditText
         android:id="@+id/etSPass"
-        android:layout_width="325dp"
+        android:layout_width="@dimen/_245sdp"
         android:layout_height="57dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/_16sdp"
         android:background="@drawable/edittextshape"
         android:drawableLeft="@drawable/lock"
         android:drawablePadding="10dp"
@@ -88,9 +88,9 @@
 
     <EditText
         android:id="@+id/etConPass"
-        android:layout_width="325dp"
+        android:layout_width="@dimen/_245sdp"
         android:layout_height="57dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/_16sdp"
         android:background="@drawable/edittextshape"
         android:drawableLeft="@drawable/lock"
         android:drawablePadding="10dp"
@@ -107,16 +107,16 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/registerbtn"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="26dp"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_25sdp"
         android:background="@drawable/greenbuttongradient"
         android:elevation="5dp"
         android:fontFamily="@font/nexa_heavy"
         android:text="Sign Up"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="@dimen/_19ssp"
         app:layout_constraintEnd_toEndOf="@+id/etConPass"
         app:layout_constraintStart_toStartOf="@+id/etConPass"
         app:layout_constraintTop_toBottomOf="@+id/etConPass" />
@@ -125,11 +125,11 @@
         android:id="@+id/haveAccountLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="@dimen/_18sdp"
         android:fontFamily="@font/lato_regular"
         android:text="Already have an account? Login now"
         android:textColor="#FF53E88B"
-        android:textSize="16sp"
+        android:textSize="@dimen/_12ssp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -51,7 +51,7 @@ public class childDashboard extends AppCompatActivity {
         });
 
         fusedLocationProviderClient  = LocationServices.getFusedLocationProviderClient(childDashboard.this);
-//        databaseRef = FirebaseDatabase.getInstance().getReference("locations");
+        databaseRef = FirebaseDatabase.getInstance().getReference("locations");
 
         locationRequest = new LocationRequest();
         locationRequest.setInterval(1000 * DEFAULT_UPDATE_INTERVAL)
@@ -107,6 +107,7 @@ public class childDashboard extends AppCompatActivity {
                     .addOnFailureListener(e -> Toast.makeText(this, "Error storing location data in Firebase: " + e.getMessage(), Toast.LENGTH_SHORT).show());
         }
     }
+
 
     @Override
     protected void onDestroy() {

@@ -45,7 +45,7 @@ public class signup extends AppCompatActivity {
         });
 
         binding.haveAccountLogin.setOnClickListener(v -> {
-            Intent intent = new Intent(signup.this, signup.class);
+            Intent intent = new Intent(signup.this, login.class);
             startActivity(intent);
         });
     }
