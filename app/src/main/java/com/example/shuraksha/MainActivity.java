@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.shuraksha.ScreenTimeFeature.AppUsageStats;
+import com.example.shuraksha.ScreenTimeFeature.fetchFromFirebase.liveScreenUsageStats;
 import com.example.shuraksha.databinding.ActivityMainBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -81,6 +83,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,Profile.class);
+                startActivity(intent);
+            }
+        });
+
+        screenTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, liveScreenUsageStats.class);
                 startActivity(intent);
             }
         });

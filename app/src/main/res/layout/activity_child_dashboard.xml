@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".childDashboard">
     <LinearLayout
+        android:id="@+id/childHeader"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:background="#D1F3C9"
@@ -42,6 +43,41 @@
 
     </LinearLayout>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/stats"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_180sdp"
+        android:layout_below="@id/childHeader"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:elevation="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_20sdp">
+
+<!--        <include layout="@layout/activity_app_usage_stats"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"/>-->
+
+
+<!--        <com.androidplot.pie.PieChart-->
+<!--            android:id="@+id/piechart"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_below="@+id/childHeader"-->
+<!--            />-->
+<!--        style="@style/APDefacto.Light"-->
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/showAppStats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stats"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:text="All App Stats"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
 
 

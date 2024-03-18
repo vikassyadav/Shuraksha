@@ -5,11 +5,14 @@ import static java.lang.Double.valueOf;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.usage.UsageStats;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.example.shuraksha.MapsFeatures.MapsActivity;
 import com.example.shuraksha.databinding.ActivityMapsBinding;
@@ -27,6 +30,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class dashboard extends AppCompatActivity implements OnMapReadyCallback {
 
     TextView contolCenter;
@@ -38,6 +44,7 @@ public class dashboard extends AppCompatActivity implements OnMapReadyCallback {
     FirebaseFirestore db;
 
 
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,7 @@ public class dashboard extends AppCompatActivity implements OnMapReadyCallback {
 
         contolCenter=findViewById(R.id.tv_controlCenter);
         addChild=findViewById(R.id.btn_addChild);
+//        pieChart=findViewById(R.id.pieChart);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -94,4 +102,5 @@ public class dashboard extends AppCompatActivity implements OnMapReadyCallback {
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
     }
+
 }

@@ -51,10 +51,18 @@ tools:context=".dashboard">
     android:layout_marginEnd="@dimen/_15sdp"
     android:elevation="@dimen/_10sdp"
     app:cardCornerRadius="@dimen/_20sdp">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/dashboard"/>
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:src="@drawable/dashboard"/>-->
+<!--    <com.androidplot.pie.PieChart-->
+<!--        android:id="@+id/pieChart"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_below="@id/childHeader"-->
+<!--        android:elevation="@dimen/_10sdp"-->
+<!--        app:cardCornerRadius="@dimen/_20sdp" />-->
+
     <!--                add pie chart -->
 
 

@@ -2,30 +2,42 @@ package com.example.shuraksha;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.shuraksha.ScreenTimeFeature.Adapter;
+import com.example.shuraksha.ScreenTimeFeature.AppUsageStats;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+
 public class childDashboard extends AppCompatActivity {
 
     ImageView profile;
+    Button allAppStats;
+    CardView cardView1;
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final String TAG = "childDashboard";
     private int DEFAULT_UPDATE_INTERVAL = 2;
@@ -36,16 +48,30 @@ public class childDashboard extends AppCompatActivity {
     LocationCallback locationCallback;
     DatabaseReference databaseRef;
     FirebaseFirestore db;
+    AppUsageStats appUsageStats = new AppUsageStats();
 
+
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child_dashboard);
+        allAppStats=findViewById(R.id.showAppStats);
         profile = findViewById(R.id.profile_icon);
+        cardView1=findViewById(R.id.stats);
+
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(childDashboard.this, Profile.class);
+                startActivity(intent);
+            }
+        });
+        allAppStats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(childDashboard.this, AppUsageStats.class);
                 startActivity(intent);
             }
         });
@@ -71,6 +97,7 @@ public class childDashboard extends AppCompatActivity {
         };
 
         requestLocationPermission();
+
     }
 
     private void requestLocationPermission() {
@@ -112,6 +139,8 @@ public class childDashboard extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+//        stops sharing location when app is closed
         fusedLocationProviderClient.removeLocationUpdates(locationCallback);
     }
+
 }

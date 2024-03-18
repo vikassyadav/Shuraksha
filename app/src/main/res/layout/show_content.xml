@@ -140,7 +140,7 @@
                     <ImageView
                         android:layout_width="@dimen/_60sdp"
                         android:layout_height="@dimen/_60sdp"
-                        android:src="@drawable/app_usage" />
+                        android:src="@drawable/performance" />
 
                     <TextView
                         android:layout_width="wrap_content"
