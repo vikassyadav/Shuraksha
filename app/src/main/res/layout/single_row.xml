@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardCornerRadius="12dp"
-    android:backgroundTint="#E68C5D"
+    android:backgroundTint="#F1B291"
     app:cardElevation="4dp">
 
     <LinearLayout
@@ -17,6 +17,7 @@
             android:id="@+id/icon_img"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:src="@drawable/default_app_icon"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop" />
 

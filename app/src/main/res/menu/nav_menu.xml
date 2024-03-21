@@ -3,7 +3,7 @@
     <item
         android:id="@+id/feat1"
         android:title="Call log"
-        android:icon="@drawable/call_log"/>
+        android:icon="@drawable/call_logs"/>
     <!--        app:showAsAction="ifRoom"/>-->
     <item
         android:id="@+id/feat2"
@@ -16,7 +16,11 @@
     <item
         android:id="@+id/feat4"
         android:title="GeoFencing"
-        android:icon="@drawable/feature_1"/>
+        android:icon="@drawable/geo_fence"/>
+    <item
+        android:id="@+id/feat7"
+        android:title="BlackList app "
+        android:icon="@drawable/sms_log"/>
     <item
         android:id="@+id/feat5"
         android:title="BlackList app "

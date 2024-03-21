@@ -13,7 +13,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.shuraksha.ScreenTimeFeature.AppUsageStats;
-import com.example.shuraksha.ScreenTimeFeature.fetchFromFirebase.liveScreenUsageStats;
+//import com.example.shuraksha.ScreenTimeFeature.fetchFromFirebase.liveScreenUsageStats;
+import com.example.shuraksha.ScreenTimeFeature.liveScreenUsageStats;
 import com.example.shuraksha.databinding.ActivityMainBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

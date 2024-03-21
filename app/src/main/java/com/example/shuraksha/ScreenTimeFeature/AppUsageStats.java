@@ -15,19 +15,30 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.drawable.AdaptiveIconDrawable;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
 
 import com.example.shuraksha.R;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.WriteBatch;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
@@ -42,6 +53,7 @@ public class AppUsageStats extends AppCompatActivity {
     private UsageStatsManager usageStatsManager;
 
 
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +63,6 @@ public class AppUsageStats extends AppCompatActivity {
 
 
         recyclerView =findViewById(R.id.rvShow);
-
 
         // Initialize UsageStatsManager
         usageStatsManager = (UsageStatsManager) getSystemService(Context.USAGE_STATS_SERVICE);
@@ -89,34 +100,31 @@ public class AppUsageStats extends AppCompatActivity {
 //        List<UsageStats> appList = usm.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, System.currentTimeMillis() - 1000 * 3600 * 24, System.currentTimeMillis());
 
 
-        appList = appList.stream().filter(app -> app.getTotalTimeInForeground() > 0).collect(Collectors.toList());
 
+//        appList = appList.stream().filter(app -> app.getTotalTimeInForeground() > 0).collect(Collectors.toList());
         // Group the usageStats by application and sort them by total time in foregro
         Map<String, UsageStats> mySortedMap = null;
         if (appList.size() > 0) {
             mySortedMap = new TreeMap<>();
             for (UsageStats usageStats : appList) {
-                mySortedMap.put(usageStats.getPackageName(), usageStats);
+                // Exclude apps with less than 1 minute of usage
+                if (usageStats.getTotalTimeInForeground() > 60000) {
+                    mySortedMap.put(usageStats.getPackageName(), usageStats);
+                }
             }
             showAppsUsage(mySortedMap);
         }
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        // Store data in Firestore
-//        db.collection("recentlyUsedApps")
-//                .add(mySortedMap)
-//                .addOnSuccessListener(documentReference -> {
-//                    // Data successfully added to Firestore
-//                    Toast.makeText(this, "Data uploaded", Toast.LENGTH_SHORT).show();
-//                })
-//                .addOnFailureListener(e -> {
-//                    // Handle any errors
-//                    Toast.makeText(this, "Failed upload", Toast.LENGTH_SHORT).show();
-//                });
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference appUsageRef = db.collection("appUsage");
 
+
         for (UsageStats usageStats : appList) {
+
             try {
+                if (usageStats.getTotalTimeInForeground() <= 60000) {
+                    continue;
+                }
                 String packageName = usageStats.getPackageName();
                 ApplicationInfo ai = getPackageManager().getApplicationInfo(packageName, 0);
                 Drawable icon = getPackageManager().getApplicationIcon(ai);
@@ -126,23 +134,57 @@ public class AppUsageStats extends AppCompatActivity {
                 String usageDuration = getDurationBreakdown(usageStats.getTotalTimeInForeground());
                 int usagePercentage = (int) (usageStats.getTotalTimeInForeground() * 100 / totalTime);
 
+                // Convert drawable icon to Bitmap
+                Bitmap bitmap = drawableToBitmap(icon);
+
+                // Convert Bitmap to byte array
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                byte[] imageData = baos.toByteArray();
+
+                // Convert byte array to Base64-encoded string
+                String base64Image = Base64.encodeToString(imageData, Base64.DEFAULT);
+
+
+
+
                 // Create a map to represent the app usage data
                 Map<String, Object> appUsageData = new HashMap<>();
                 appUsageData.put("appName", appName);
                 appUsageData.put("usageDuration", usageDuration);
                 appUsageData.put("usagePercentage", usagePercentage);
+                appUsageData.put("appicon", base64Image);
+
 
 
                 // Upload the app usage data to Firestore
-                appUsageRef.add(appUsageData)
-                        .addOnSuccessListener(documentReference -> {
-                            // Data successfully added to Firestore
-                            Toast.makeText(this, "Data uploaded", Toast.LENGTH_SHORT).show();
-                        })
-                        .addOnFailureListener(e -> {
+                appUsageRef.get().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        WriteBatch batch = db.batch();
+                        for (DocumentSnapshot document : task.getResult()) {
+                            batch.delete(document.getReference());
+                        }
+                        batch.commit().addOnSuccessListener(aVoid -> {
+                            // All existing documents deleted successfully
+                            // Now add the new app usage data
+                            appUsageRef.add(appUsageData)
+                                    .addOnSuccessListener(documentReference -> {
+                                        // Data successfully added to Firestore
+                                        Toast.makeText(this, "Data uploaded", Toast.LENGTH_SHORT).show();
+                                    })
+                                    .addOnFailureListener(e -> {
+                                        // Handle any errors
+                                        Toast.makeText(this, "Failed uploaded", Toast.LENGTH_SHORT).show();
+                                    });
+                        }).addOnFailureListener(e -> {
                             // Handle any errors
-                            Toast.makeText(this, "Failed uploaded", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Failed to clear previous data", Toast.LENGTH_SHORT).show();
                         });
+                    } else {
+                        // Handle the error
+                        Toast.makeText(this, "Failed to retrieve data", Toast.LENGTH_SHORT).show();
+                    }
+                });
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
@@ -253,6 +295,20 @@ public class AppUsageStats extends AppCompatActivity {
 //        return (hours + " h " +  minutes + " m " + seconds + " s");
 
     }
+    public static Bitmap drawableToBitmap(Drawable drawable) {
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable) drawable).getBitmap();
+        }
 
+        int width = drawable.getIntrinsicWidth();
+        int height = drawable.getIntrinsicHeight();
+
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+
+        return bitmap;
+    }
 
 }

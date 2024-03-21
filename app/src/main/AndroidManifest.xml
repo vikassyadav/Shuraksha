@@ -20,7 +20,10 @@
         android:theme="@style/Theme.Shuraksha"
         tools:targetApi="31">
         <activity
-            android:name=".ScreenTimeFeature.fetchFromFirebase.liveScreenUsageStats"
+            android:name=".CallLog.CallLogStats"
+            android:exported="false" />
+        <activity
+            android:name=".ScreenTimeFeature.liveScreenUsageStats"
             android:exported="false" />
         <activity
             android:name=".ScreenTimeFeature.AppUsageStats"

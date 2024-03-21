@@ -174,7 +174,7 @@
                     <ImageView
                         android:layout_width="@dimen/_60sdp"
                         android:layout_height="@dimen/_60sdp"
-                        android:src="@drawable/call_log"
+                        android:src="@drawable/call_logs"
                         />
 
                     <TextView
@@ -242,12 +242,12 @@
                     <ImageView
                         android:layout_width="@dimen/_60sdp"
                         android:layout_height="@dimen/_60sdp"
-                        android:src="@drawable/feature_1" />
+                        android:src="@drawable/sms_log" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Live Location"
+                        android:text="Sms Log"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />

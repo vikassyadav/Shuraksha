@@ -40,6 +40,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
         holder.usagePercent.setText(usageStats.usagePercentage + "%");
         holder.icon_img.setImageDrawable(usageStats.appIcon);
         holder.progressBar.setProgress(usageStats.usagePercentage);
+
+        holder.appName.setText(usageStats.getAppName());
+        holder.UasgeDuration.setText(usageStats.getUsageDuration());
+        holder.usagePercent.setText(usageStats.getUsagePercentage() + "%");
+
     }
 
     @Override
